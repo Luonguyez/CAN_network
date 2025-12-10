@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"cannetwork\startup_stm32f103xb.o"
+"cannetwork\main.o"
+"cannetwork\stm32f1xx_it.o"
+"cannetwork\stm32f1xx_hal_msp.o"
+"cannetwork\stm32f1xx_hal_gpio_ex.o"
+"cannetwork\stm32f1xx_hal_spi.o"
+"cannetwork\stm32f1xx_hal.o"
+"cannetwork\stm32f1xx_hal_rcc.o"
+"cannetwork\stm32f1xx_hal_rcc_ex.o"
+"cannetwork\stm32f1xx_hal_gpio.o"
+"cannetwork\stm32f1xx_hal_dma.o"
+"cannetwork\stm32f1xx_hal_cortex.o"
+"cannetwork\stm32f1xx_hal_pwr.o"
+"cannetwork\stm32f1xx_hal_flash.o"
+"cannetwork\stm32f1xx_hal_flash_ex.o"
+"cannetwork\stm32f1xx_hal_exti.o"
+"cannetwork\stm32f1xx_hal_uart.o"
+"cannetwork\system_stm32f1xx.o"
+"cannetwork\app.o"
+"cannetwork\gpio_ex.o"
+"cannetwork\spi_ex.o"
+"cannetwork\uart_ex.o"
+--strict --scatter "CANnetwork\CANnetwork.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "CANnetwork.map" -o CANnetwork\CANnetwork.axf
