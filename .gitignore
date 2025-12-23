@@ -1,0 +1,52 @@
+# === Biên dịch (Compilation) ===
+# Chặn các file object (.o, .obj)
+*.o
+*.obj
+
+# Chặn các file thư viện tĩnh và động
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+
+# === File thực thi (Executables) ===
+# Chặn các file thực thi có đuôi hoặc không có đuôi
+*.exe
+*.out
+*.app
+.settings
+.vscode
+.cproject
+.mxproject
+.cfg
+.launch
+.ioc
+.ld
+# Tên file thực thi cụ thể nếu bạn biết trước (ví dụ: main)
+# main
+
+# === Thư mục Build và Debug ===
+[build]/
+[Debug]/
+[Release]/
+bin/
+obj/
+
+# === IDEs và Hệ thống ===
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj
+*.user
+
+# VS Code
+.vscode/
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+
+# Hệ thống
+.DS_Store
+Thumbs.db
