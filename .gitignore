@@ -33,6 +33,7 @@
 bin/
 obj/
 
+
 # === IDEs và Hệ thống ===
 # Visual Studio
 .vs/
@@ -50,3 +51,11 @@ obj/
 # Hệ thống
 .DS_Store
 Thumbs.db
+# === Keil MDK-ARM ===
+MDK-ARM/Listings/
+MDK-ARM/Objects/
+MDK-ARM/DebugConfig/
+MDK-ARM/*.uvgui.*
+MDK-ARM/*.dep
+MDK-ARM/*.bak
+MDK-ARM/*.scvd
