@@ -1,5 +1,5 @@
-cannetwork\gpio_ex.o: ..\Core\BoardSP\gpio_ex.c
-cannetwork\gpio_ex.o: ..\Core\BoardSP\gpio_ex.h
+cannetwork\gpio_ex.o: ..\UserCode\BoardSP\gpio_ex.c
+cannetwork\gpio_ex.o: ..\UserCode\BoardSP\gpio_ex.h
 cannetwork\gpio_ex.o: ../Core/Inc/main.h
 cannetwork\gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 cannetwork\gpio_ex.o: ../Core/Inc/stm32f1xx_hal_conf.h
@@ -26,3 +26,5 @@ cannetwork\gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
 cannetwork\gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 cannetwork\gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 cannetwork\gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+cannetwork\gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
+cannetwork\gpio_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h

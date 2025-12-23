@@ -25,6 +25,9 @@ cannetwork\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
 cannetwork\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 cannetwork\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 cannetwork\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
-cannetwork\main.o: ../Core/BoardSP/spi_ex.h
-cannetwork\main.o: ../Core/BoardSP/gpio_ex.h
-cannetwork\main.o: ../Core/App/app.h
+cannetwork\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
+cannetwork\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+cannetwork\main.o: ../Core/Inc/spi.h
+cannetwork\main.o: ../Core/Inc/usart.h
+cannetwork\main.o: ../Core/Inc/gpio.h
+cannetwork\main.o: ../UserCode/BoardSP/gpio_ex.h
