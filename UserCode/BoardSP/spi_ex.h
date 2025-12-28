@@ -12,40 +12,33 @@
 #define __SPI_EX_H
 
 /* Includes ----------------------------------------------------------- */
-#include <stdint.h>
+#include "spi.h"
+#include "stdint.h"
 #include <stdbool.h>
 /* Public defines ----------------------------------------------------- */
-typedef void (*fp_spi1_hal_cb)( void );
-
+typedef void (*fp_spi_hal_cb)( void );
 /* Public macros ------------------------------------------------------ */
 /* Public enumerate/structure ----------------------------------------- */
-typedef enum
-{
-	EM_SPI1, // peripheral spi1
-	EM_SPI2, // peripheral spi2
-}spi_channel_t;
-
 typedef struct 
 {
-	const uint8_t* p_data;
-	const uint16_t size_in_bytes;
+	const uint8_t* p_txdata;
+	const uint16_t  size_of_txdata;
 }spi_txdata_t;
 
 typedef struct 
 {
-	uint8_t* p_data;
-	uint16_t size_in_bytes;
-	uint16_t timeout_ms;
+	uint8_t* p_rxdata;
+	uint16_t  size_of_rxdata;
+	uint16_t  timeout_ms;
 }spi_rxdata_t;
 
 /* Public variables --------------------------------------------------- */
 /* Public function prototypes ----------------------------------------- */
-
 void x_spi_init( void );
-void x_spi1_register_txcpltcb( const fp_spi1_hal_cb );
-void x_spi1_register_rxcpltcb( const fp_spi1_hal_cb );
-bool b_spi1_send_data( const spi_txdata_t* p_tx_data );
-bool b_spi1_receive_data( spi_rxdata_t* p_rx_data );
+void x_spi_register_txcpltcb( const fp_spi_hal_cb );
+void x_spi_register_rxcpltcb( const fp_spi_hal_cb );
+bool b_spi_receive_data( spi_rxdata_t* p_rx_data );
+bool b_spi_send_data( const spi_txdata_t* p_tx_data );
 
 #endif // __SPI_EX_H
 /* End of file -------------------------------------------------------- */

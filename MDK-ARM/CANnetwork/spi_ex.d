@@ -1,7 +1,5 @@
 cannetwork\spi_ex.o: ..\UserCode\BoardSP\spi_ex.c
 cannetwork\spi_ex.o: ..\UserCode\BoardSP\spi_ex.h
-cannetwork\spi_ex.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-cannetwork\spi_ex.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 cannetwork\spi_ex.o: ../Core/Inc/spi.h
 cannetwork\spi_ex.o: ../Core/Inc/main.h
 cannetwork\spi_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
@@ -11,6 +9,7 @@ cannetwork\spi_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 cannetwork\spi_ex.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 cannetwork\spi_ex.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
 cannetwork\spi_ex.o: ../Drivers/CMSIS/Include/core_cm3.h
+cannetwork\spi_ex.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 cannetwork\spi_ex.o: ../Drivers/CMSIS/Include/cmsis_version.h
 cannetwork\spi_ex.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 cannetwork\spi_ex.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -30,3 +29,4 @@ cannetwork\spi_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.
 cannetwork\spi_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 cannetwork\spi_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 cannetwork\spi_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+cannetwork\spi_ex.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

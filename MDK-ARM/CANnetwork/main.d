@@ -31,3 +31,6 @@ cannetwork\main.o: ../Core/Inc/spi.h
 cannetwork\main.o: ../Core/Inc/usart.h
 cannetwork\main.o: ../Core/Inc/gpio.h
 cannetwork\main.o: ../UserCode/BoardSP/gpio_ex.h
+cannetwork\main.o: ../UserCode/BoardSP/spi_ex.h
+cannetwork\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+cannetwork\main.o: ../UserCode/BoardSP/uart_ex.h

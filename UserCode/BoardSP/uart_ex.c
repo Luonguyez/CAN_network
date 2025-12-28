@@ -8,52 +8,77 @@
 
 /* Includes ----------------------------------------------------------- */
 #include "uart_ex.h"
-#include "stm32f1xx_hal.h"
-/* Private defines ---------------------------------------------------- */
 
+/* Private defines ---------------------------------------------------- */
 /* Private macros ----------------------------------------------------- */
 /* Private enumerate/structure ---------------------------------------- */
 /* Private variables -------------------------------------------------- */
+static fp_uart_hal_cb sfp_txcplt_cb = NULL;
+static fp_uart_hal_cb sfp_rxcplt_cb = NULL;
 /* Private function prototypes ---------------------------------------- */
+static void x_uart_txcpltcb( UART_HandleTypeDef* );
+static void x_uart_rxcpltcb( UART_HandleTypeDef* ); 
 /* Public variables --------------------------------------------------- */
 /* Private function definitions --------------------------------------- */
+static void x_uart_txcpltcb( UART_HandleTypeDef *huart )
+{
+    if ( !sfp_txcplt_cb )
+    {
+        // Log the error
+        return;
+    }
+    sfp_txcplt_cb();
+}
+static void x_uart_rxcpltcb( UART_HandleTypeDef *huart )
+{
+    if ( !sfp_rxcplt_cb )
+    {
+        // Log the error
+        return;
+    }
+    sfp_rxcplt_cb();
+}
+
 /* Function definitions ----------------------------------------------- */
-
-UART_HandleTypeDef huart1;
-
-void UART_EX_Init(void)
+void x_uart_init( void )
 {
-    __HAL_RCC_USART1_CLK_ENABLE();
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-    /* PA9 TX */
-    GPIO_InitStruct.Pin = GPIO_PIN_9;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-    /* PA10 RX */
-    GPIO_InitStruct.Pin = GPIO_PIN_10;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-    huart1.Instance = USART1;
-    huart1.Init.BaudRate = 115200;
-    huart1.Init.WordLength = UART_WORDLENGTH_8B;
-    huart1.Init.StopBits = UART_STOPBITS_1;
-    huart1.Init.Parity = UART_PARITY_NONE;
-    huart1.Init.Mode = UART_MODE_TX_RX;
-    huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-    huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-
-    HAL_UART_Init(&huart1);
+    MX_USART1_UART_Init(); 
 }
 
-void UART_EX_Transmit(uint8_t *pData, uint16_t size)
+void x_uart_register_txcpltcb( const fp_uart_hal_cb fp_reg_function )
 {
-    HAL_UART_Transmit(&huart1, pData, size, 100);
+    HAL_UART_RegisterCallback( &huart1, HAL_UART_TX_COMPLETE_CB_ID, x_uart_txcpltcb );
+    sfp_txcplt_cb = fp_reg_function;
 }
+
+void x_uart_register_rxcpltcb( const fp_uart_hal_cb fp_reg_function )
+{
+    HAL_UART_RegisterCallback( &huart1, HAL_UART_RX_COMPLETE_CB_ID, x_uart_rxcpltcb );
+    sfp_rxcplt_cb = fp_reg_function;
+}
+
+bool b_uart_receive_data( uart_rxdata_t* p_rx_data )
+{
+    HAL_StatusTypeDef em_result = HAL_ERROR;
+    bool b_status = false;
+    em_result = HAL_UART_Receive( &huart1, p_rx_data->p_rxdata, p_rx_data->size_of_rxdata, p_rx_data->timeout_ms );
+    if ( em_result == HAL_OK )
+    {
+        b_status = true;
+    }
+    return b_status;;
+}
+
+bool b_uart_send_data( const uart_txdata_t* p_tx_data )
+{
+    HAL_StatusTypeDef em_result = HAL_ERROR;
+    bool b_status = false;
+    em_result = HAL_UART_Transmit( &huart1, (uint8_t*)p_tx_data->p_txdata, p_tx_data->size_of_txdata, p_tx_data->timeout_ms );
+    if ( em_result == HAL_OK )
+    {
+        b_status = true;
+    }
+    return b_status;
+}
+
 /* End of file -------------------------------------------------------- */

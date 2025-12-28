@@ -1,5 +1,8 @@
-cannetwork\uart_ex.o: ..\Core\BoardSP\uart_ex.c
-cannetwork\uart_ex.o: ..\Core\BoardSP\uart_ex.h
+cannetwork\uart_ex.o: ..\UserCode\BoardSP\uart_ex.c
+cannetwork\uart_ex.o: ..\UserCode\BoardSP\uart_ex.h
+cannetwork\uart_ex.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+cannetwork\uart_ex.o: ../Core/Inc/usart.h
+cannetwork\uart_ex.o: ../Core/Inc/main.h
 cannetwork\uart_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
 cannetwork\uart_ex.o: ../Core/Inc/stm32f1xx_hal_conf.h
 cannetwork\uart_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
@@ -7,7 +10,6 @@ cannetwork\uart_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 cannetwork\uart_ex.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 cannetwork\uart_ex.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
 cannetwork\uart_ex.o: ../Drivers/CMSIS/Include/core_cm3.h
-cannetwork\uart_ex.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 cannetwork\uart_ex.o: ../Drivers/CMSIS/Include/cmsis_version.h
 cannetwork\uart_ex.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 cannetwork\uart_ex.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -25,3 +27,6 @@ cannetwork\uart_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
 cannetwork\uart_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 cannetwork\uart_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 cannetwork\uart_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+cannetwork\uart_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
+cannetwork\uart_ex.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+cannetwork\uart_ex.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

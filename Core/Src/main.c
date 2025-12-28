@@ -25,6 +25,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "gpio_ex.h"
+#include "spi_ex.h"
+#include "uart_ex.h"
 
 /* USER CODE END Includes */
 
@@ -46,13 +48,14 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+static const uint8_t* s_txstring = (const uint8_t*)"Hello";
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+static void x_CoreInit( void );
+static void x_spi_tx_complete_cb( void );
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -68,44 +71,39 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+  x_CoreInit();
+	x_spi_init();
+  x_uart_init();
+	
+	x_spi_register_txcpltcb(x_spi_tx_complete_cb);
+	const spi_txdata_t spi_txdata = {
+		.p_txdata = s_txstring,
+		.size_of_txdata = strlen((const char*)s_txstring)
+	};
+	while(1)
+	{
+		HAL_Delay(500);
+		b_spi_send_data(&spi_txdata);
+	}
+	return 0;
+}
 
-  /* USER CODE END 1 */
+static void x_spi_tx_complete_cb( void )
+{
+	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+}
 
-  /* MCU Configuration--------------------------------------------------------*/
-
+static void x_CoreInit( void )
+{
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
-	
-  /* USER CODE END SysInit */
-
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_SPI1_Init();
-  MX_USART1_UART_Init();
-  /* USER CODE BEGIN 2 */
-	LED_Init();
   
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
 }
 
 /**
